@@ -33,11 +33,14 @@ export const useSaveStateToLocalStorageOnChange = () => {
   }, []);
 };
 
+import defaultState from "lib/redux/defaultState.json";
+
 export const useSetInitialStore = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    const state = loadStateFromLocalStorage();
+    const state = loadStateFromLocalStorage() || defaultState;
     if (!state) return;
+
     if (state.resume) {
       // We merge the initial state with the stored state to ensure
       // backward compatibility, since new fields might be added to

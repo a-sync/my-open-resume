@@ -8,7 +8,7 @@ import { ArrowDownTrayIcon, ArrowUpTrayIcon } from "@heroicons/react/24/outline"
 import { store } from "lib/redux/store";
 import { deepMerge } from "lib/deep-merge";
 import { initialResumeState, selectResume, setResume } from "lib/redux/resumeSlice";
-import { Settings, initialSettings, selectSettings, setSettings } from "lib/redux/settingsSlice";
+import { Settings, initialSettings, setSettings } from "lib/redux/settingsSlice";
 import { Resume } from "lib/redux/types";
 import { useAppDispatch, useAppSelector } from "lib/redux/hooks";
 import { useEffect, useState } from "react";
