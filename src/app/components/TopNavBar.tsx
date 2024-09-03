@@ -12,6 +12,7 @@ import { Settings, initialSettings, setSettings } from "lib/redux/settingsSlice"
 import { Resume } from "lib/redux/types";
 import { useAppDispatch, useAppSelector } from "lib/redux/hooks";
 import { useEffect, useState } from "react";
+import { ResetLocal } from "./ResumeForm/ThemeForm/Selection";
 
 const downloadFile = (fileName: string, blob: Blob) => {
   var a = document.createElement("a");
@@ -128,6 +129,7 @@ export const TopNavBar = () => {
               </a>
             </>
           ) : null}
+          <ResetLocal/>
         </nav>
       </div>
     </header>
