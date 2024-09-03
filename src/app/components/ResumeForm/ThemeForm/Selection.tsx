@@ -7,6 +7,8 @@ import {
 } from "components/fonts/constants";
 import { getAllFontFamiliesToLoad } from "components/fonts/lib";
 import dynamic from "next/dynamic";
+import { deleteStateFromLocalStorage } from "lib/redux/local-storage";
+import { TrashIcon } from "@heroicons/react/24/outline";
 
 const Selection = ({
   selectedColor,
@@ -160,4 +162,15 @@ export const DocumentSizeSelections = ({
       })}
     </SelectionsWrapper>
   );
+};
+
+export const ResetLocal = () => {
+  const handleReset = () => {
+    deleteStateFromLocalStorage();
+  };
+  return (
+    <button onClick={handleReset} className="flex items-center rounded-md bg-white py-2 pl-3 pr-4 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+    <TrashIcon style={{ opacity: 0.7 ,color:"red" }} className="w-5 h-5 mr-2 " /> Reset CV
+  </button>
+    );
 };
