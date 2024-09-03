@@ -130,7 +130,7 @@ const BulletListTextareaGeneral = <T extends string>({
           showBulletPoints ? "pl-7" : "[&>div]:list-['']"
         }`}
         // Note: placeholder currently doesn't work
-        placeholder={placeholder}
+        // placeholder={placeholder}
         onChange={(e) => {
           if (e.type === "input") {
             const { innerText } = e.currentTarget as HTMLDivElement;
