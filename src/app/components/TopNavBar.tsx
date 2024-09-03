@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import logoSrc from "public/logo.svg";
 import { cx } from "lib/cx";
-import { ArrowDownTrayIcon, ArrowUpTrayIcon } from "@heroicons/react/24/outline";
+import { ArrowDownCircleIcon, ArrowDownTrayIcon, ArrowUpTrayIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { store } from "lib/redux/store";
 import { deepMerge } from "lib/deep-merge";
 import { initialResumeState, selectResume, setResume } from "lib/redux/resumeSlice";
@@ -12,7 +12,6 @@ import { Settings, initialSettings, setSettings } from "lib/redux/settingsSlice"
 import { Resume } from "lib/redux/types";
 import { useAppDispatch, useAppSelector } from "lib/redux/hooks";
 import { useEffect, useState } from "react";
-import { ResetLocal } from "./ResumeForm/ThemeForm/Selection";
 
 const downloadFile = (fileName: string, blob: Blob) => {
   var a = document.createElement("a");
@@ -108,7 +107,7 @@ export const TopNavBar = () => {
           {showImportExport ? (
             <>
               <a
-                className="ml-1 flex items-center gap-1 rounded-md border border-gray-300 px-3 py-0.5 hover:bg-gray-100 lg:ml-4 cursor-pointer"
+                className="ml-1 flex items-center gap-1 rounded-md border border-gray-300 px-3 py-0.5 hover:bg-gray-100 cursor-pointer"
                 onClick={(e) => (e.currentTarget.firstElementChild as HTMLInputElement).click()}
               >
                 <input
@@ -121,7 +120,7 @@ export const TopNavBar = () => {
                 <span className="whitespace-nowrap">Import</span>
               </a>
               <a
-                className="ml-1 flex items-center gap-1 rounded-md border border-gray-300 px-3 py-0.5 hover:bg-gray-100 lg:ml-4 cursor-pointer"
+                className="ml-1 flex items-center gap-1 rounded-md border border-gray-300 px-3 py-0.5 hover:bg-gray-100 cursor-pointer"
                 onClick={() => exportResume(fileName)}
               >
                 <ArrowDownTrayIcon className="h-4 w-4" />
@@ -129,7 +128,14 @@ export const TopNavBar = () => {
               </a>
             </>
           ) : null}
-          <ResetLocal/>
+          <a onClick={() => (document.getElementById('resume-reset-button') as HTMLAnchorElement).click()} className="flex items-center rounded-md bg-white py-2 pl-3 pr-4 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-red-50 cursor-pointer">
+            <TrashIcon style={{ opacity: 0.7, color: "red" }} className="w-5 h-5 mr-2 " />
+            <span className="whitespace-nowrap">Reset</span>
+          </a>
+          <a onClick={() => (document.getElementById('resume-download-button') as HTMLAnchorElement).click()} className="flex items-center rounded-md bg-white py-2 pl-3 pr-4 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-green-50 cursor-pointer">
+            <ArrowDownCircleIcon style={{ opacity: 0.7, color: "green" }} className="w-5 h-5 mr-2 " />
+            <span className="whitespace-nowrap">Download Resume</span>
+          </a>
         </nav>
       </div>
     </header>

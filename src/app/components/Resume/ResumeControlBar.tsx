@@ -3,10 +3,28 @@ import { useEffect } from "react";
 import { useSetDefaultScale } from "components/Resume/hooks";
 import {
   MagnifyingGlassIcon,
-  ArrowDownTrayIcon,
+  ArrowDownCircleIcon,
 } from "@heroicons/react/24/outline";
 import { usePDF } from "@react-pdf/renderer";
 import dynamic from "next/dynamic";
+import { deleteStateFromLocalStorage } from "lib/redux/local-storage";
+import { TrashIcon } from "@heroicons/react/24/outline";
+
+const ResetLocal = () => {
+  const handleReset = () => {
+    deleteStateFromLocalStorage();
+  };
+  return (
+    <a 
+    id="resume-reset-button"
+    onClick={handleReset} 
+    className="ml-1 flex items-center gap-1 rounded-md border border-gray-300 px-3 py-0.5 hover:bg-red-100 cursor-pointer"
+    >
+      <TrashIcon style={{ opacity: 0.7, color: "red" }} className="h-4 w-4" />
+      <span className="whitespace-nowrap">Reset</span>
+    </a>
+  );
+};
 
 const ResumeControlBar = ({
   scale,
@@ -34,7 +52,7 @@ const ResumeControlBar = ({
   }, [update, document]);
 
   return (
-    <div className="sticky bottom-0 left-0 right-0 flex h-[var(--resume-control-bar-height)] items-center justify-center px-[var(--resume-padding)] text-gray-600 lg:justify-between">
+    <div className="sticky bottom-0 left-0 right-0 flex h-[var(--resume-control-bar-height)] items-center justify-center px-[var(--resume-padding)] text-gray-600">
       <div className="flex items-center gap-2">
         <MagnifyingGlassIcon className="h-5 w-5" aria-hidden="true" />
         <input
@@ -59,12 +77,14 @@ const ResumeControlBar = ({
           <span className="select-none">Autoscale</span>
         </label>
       </div>
+      <ResetLocal />
       <a
-        className="ml-1 flex items-center gap-1 rounded-md border border-gray-300 px-3 py-0.5 hover:bg-green-100 lg:ml-8"
+        id="resume-download-button"
+        className="ml-1 flex items-center gap-1 rounded-md border border-gray-300 px-3 py-0.5 hover:bg-green-100 cursor-pointer"
         href={instance.url!}
         download={fileName}
       >
-        <ArrowDownTrayIcon className="h-4 w-4" />
+        <ArrowDownCircleIcon style={{ opacity: 0.7, color: "green" }} className="h-4 w-4" />
         <span className="whitespace-nowrap">Download Resume</span>
       </a>
     </div>
