@@ -27,7 +27,7 @@ export const TopNavBar = () => {
             priority
           />
         </Link>
-        <nav
+        {/* <nav
           aria-label="Site Nav Bar"
           className="flex items-center gap-2 text-sm font-medium"
         >
@@ -52,7 +52,7 @@ export const TopNavBar = () => {
               title="GitHub"
             />
           </div>
-        </nav>
+        </nav> */}
       </div>
     </header>
   );
