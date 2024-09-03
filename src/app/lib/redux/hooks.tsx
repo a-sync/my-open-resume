@@ -33,30 +33,31 @@ export const useSaveStateToLocalStorageOnChange = () => {
   }, []);
 };
 
-import defaultState from "lib/redux/defaultState.json";
-
 export const useSetInitialStore = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    const state = loadStateFromLocalStorage() || defaultState;
-    if (!state) return;
+    const loadState = async () => {
+      const state = loadStateFromLocalStorage() || await (await fetch("/assets/defaultState.json")).json();
+      if (!state) return;
 
-    if (state.resume) {
-      // We merge the initial state with the stored state to ensure
-      // backward compatibility, since new fields might be added to
-      // the initial state over time.
-      const mergedResumeState = deepMerge(
-        initialResumeState,
-        state.resume
-      ) as Resume;
-      dispatch(setResume(mergedResumeState));
-    }
-    if (state.settings) {
-      const mergedSettingsState = deepMerge(
-        initialSettings,
-        state.settings
-      ) as Settings;
-      dispatch(setSettings(mergedSettingsState));
-    }
+      if (state.resume) {
+        // We merge the initial state with the stored state to ensure
+        // backward compatibility, since new fields might be added to
+        // the initial state over time.
+        const mergedResumeState = deepMerge(
+          initialResumeState,
+          state.resume
+        ) as Resume;
+        dispatch(setResume(mergedResumeState));
+      }
+      if (state.settings) {
+        const mergedSettingsState = deepMerge(
+          initialSettings,
+          state.settings
+        ) as Settings;
+        dispatch(setSettings(mergedSettingsState));
+      }
+    };
+    loadState();
   }, [dispatch]);
 };
