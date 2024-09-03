@@ -1,5 +1,4 @@
 import "globals.css";
-import { TopNavBar } from "components/TopNavBar";
 
 export const metadata = {
   title: "Personal Resume Builder",
@@ -15,7 +14,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <TopNavBar />
         {children}
       </body>
     </html>
