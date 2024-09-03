@@ -20,8 +20,8 @@ export const ResumePDFProfile = ({
   themeColor: string;
   isPDF: boolean;
 }) => {
-  const { name, email, phone, url, summary, location } = profile;
-  const iconProps = { email, phone, location, url };
+  const { name, email, phone, url, url2, summary, location } = profile;
+  const iconProps = { email, phone, location, url, url2 };
 
   return (
     <ResumePDFSection style={{ marginTop: spacing["4"] }}>
@@ -44,18 +44,20 @@ export const ResumePDFProfile = ({
           if (!value) return null;
 
           let iconType = key as IconType;
-          if (key === "url") {
-            if (value.includes("github")) {
+          if (["url", "url2"].includes(key)) {
+            if (value.includes("github.com")) {
               iconType = "url_github";
-            } else if (value.includes("linkedin")) {
+            } else if (value.includes("linkedin.com")) {
               iconType = "url_linkedin";
             }
           }
 
-          const shouldUseLinkWrapper = ["email", "url", "phone"].includes(key);
+          const shouldUseLinkWrapper = ["email", "url", "url2", "phone"].includes(key);
           const Wrapper = ({ children }: { children: React.ReactNode }) => {
             if (!shouldUseLinkWrapper) return <>{children}</>;
 
+            const https_regexp = /^https?:\/\//;
+            
             let src = "";
             switch (key) {
               case "email": {
@@ -67,7 +69,7 @@ export const ResumePDFProfile = ({
                 break;
               }
               default: {
-                src = value.startsWith("http") ? value : `https://${value}`;
+                src = `https://${value.replace(https_regexp, "")}`;
               }
             }
 
