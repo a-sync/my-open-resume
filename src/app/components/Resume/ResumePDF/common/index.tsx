@@ -43,6 +43,7 @@ export const ResumePDFSection = ({
           style={{
             fontWeight: "bold",
             letterSpacing: "0.3pt", // tracking-wide -> 0.025em * 12 pt = 0.3pt
+            // fontSize: "120%",
           }}
           debug={DEBUG_RESUME_PDF_FLAG}
         >
