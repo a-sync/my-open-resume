@@ -1,10 +1,14 @@
 # OpenResume
 [OpenResume](https://open-resume.com) is a powerful open-source resume builder and resume parser.  
-This fork focuses on the builder part and adds qol features to provide a customizable resume on your personal website.  
-Some of the fixes and features are merged from other [community forks](https://github.com/xitanggg/open-resume/network).
+[This fork](https://github.com/a-sync/my-open-resume) focuses on the builder part and adds QoL features to provide a customizable resume on your personal website.  
+
+The default content of the resume is loaded from the [./public/assets/defaultState.json](./public/assets/defaultState.json) file.  
+Holding down <kbd>CTRL</kbd> + <kbd>Alt/Opt</kbd> and tapping <kbd>Shift</kbd> toggles the import and export buttons.  
+
+Some of the other fixes and features are merged from other [community forks](https://github.com/xitanggg/open-resume/network).  
 
 ## ⚒️ Resume Builder
-OpenResume's resume builder allows user to create a modern professional resume easily.
+OpenResume's resume builder allows user to create a modern professional resume easily.  
 
 ![Resume Builder Demo](https://i.ibb.co/jzcrrt8/resume-builder-demo-optimize.gif)
 
@@ -33,9 +37,6 @@ OpenResume is created with the NextJS web framework and follows its project stru
 | <div style="width:115px">**Page Route**</div> | **Code Path** | **Description** |
 |---|---|---|
 | / | /page.tsx | Resume builder page to build and download a resume PDF. The main components used are `ResumeForm` (`/components/ResumeForm`) and `Resume` (`/components/Resume`) |
-
-The default content of the resume is loaded from the [./public/assets/defaultState.json](./public/assets/defaultState.json) file.  
-Holding down <kbd>CTRL</kbd> + <kbd>Alt/Opt</kbd> and tapping <kbd>Shift</kbd> toggles the import and export buttons.
 
 ## 💻 Local Development
 1. Download the repo `git clone https://github.com/a-sync/open-resume.git`
