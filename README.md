@@ -5,7 +5,7 @@
 The default content of the resume is loaded from the [./public/assets/defaultState.json](./public/assets/defaultState.json) file.  
 Holding down <kbd>CTRL</kbd> + <kbd>Alt/Opt</kbd> and tapping <kbd>Shift</kbd> toggles the import and export buttons.  
 
-Some of the other fixes and features are merged from other [community forks](https://github.com/xitanggg/open-resume/network).  
+Some of the features and fixes are merged from other [community forks](https://github.com/xitanggg/open-resume/network).  
 
 ## ⚒️ Resume Builder
 OpenResume's resume builder allows user to create a modern professional resume easily.  
