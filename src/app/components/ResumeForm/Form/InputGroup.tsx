@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import ContentEditable from "react-contenteditable";
 import { useAutosizeTextareaHeight } from "lib/hooks/useAutosizeTextareaHeight";
+import { ContentEditable } from "./ContentEditable";
 
 interface InputProps<K extends string, V extends string | string[]> {
   label: string;
